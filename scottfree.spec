@@ -1,8 +1,8 @@
 Summary: Interpreter for Scott Adams format text adventure games
 Name: scottfree
 Version: 1.14
-Release: 2%{?dist}
-License: GPL
+Release: 3%{?dist}
+License: GPLv2+
 Group: Amusements/Games
 Source: ftp://ftp.gmd.de/if-archive/scott-adams/ScottFree.tar.gz
 Patch: scottfree-1.14.diff
@@ -37,11 +37,15 @@ rm -rf %{buildroot}
 %doc README Definition
 
 %changelog
-* Mon Oct 09 2006 Andrea Musuruane <musuruan@gmail.com> 1.14-2%{?dist}
+* Fri Nov 02 2007 Andrea Musuruane <musuruan@gmail.com> 1.14-3
+- changed license due to new guidelines
+- removed %%{?dist} tag from changelog
+
+* Mon Oct 09 2006 Andrea Musuruane <musuruan@gmail.com> 1.14-2
 - changed patch name to lowercase to match RPM name
 - changed group to "Amusements/Games"
 - added %%{?_smp_mflags} to make invocation to speed up SMP builds
 
-* Sat Oct 07 2006 Andrea Musuruane <musuruan@gmail.com> 1.14-1%{?dist}
+* Sat Oct 07 2006 Andrea Musuruane <musuruan@gmail.com> 1.14-1
 - initial package based on the old RH 5.2 package and a patch from Debian
 
