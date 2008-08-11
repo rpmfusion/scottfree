@@ -1,7 +1,7 @@
 Summary: Interpreter for Scott Adams format text adventure games
 Name: scottfree
 Version: 1.14
-Release: 3%{?dist}
+Release: 4%{?dist}
 License: GPLv2+
 Group: Amusements/Games
 Source: ftp://ftp.gmd.de/if-archive/scott-adams/ScottFree.tar.gz
@@ -37,6 +37,9 @@ rm -rf %{buildroot}
 %doc README Definition
 
 %changelog
+* Mon Aug 11 2008 Thorsten Leemhuis <fedora [AT] leemhuis [DOT] info - 1.14-4
+- rebuild to fix early trouble on RPM Fusions x86 builders
+
 * Fri Nov 02 2007 Andrea Musuruane <musuruan@gmail.com> 1.14-3
 - changed license due to new guidelines
 - removed %%{?dist} tag from changelog
