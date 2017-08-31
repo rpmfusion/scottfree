@@ -1,7 +1,7 @@
 Summary: Interpreter for Scott Adams format text adventure games
 Name: scottfree
 Version: 1.14
-Release: 9%{?dist}
+Release: 10%{?dist}
 License: GPLv2+
 Group: Amusements/Games
 Source: ftp://ftp.gmd.de/if-archive/scott-adams/ScottFree.tar.gz
@@ -37,6 +37,9 @@ rm -rf %{buildroot}
 %doc README Definition
 
 %changelog
+* Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.14-10
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Mon Mar 20 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.14-9
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
