@@ -1,12 +1,14 @@
+%global	       debug_package %{nil}
+
 Summary: Interpreter for Scott Adams format text adventure games
-Name: scottfree
+Name:    scottfree
 Version: 1.14
-Release: 10%{?dist}
+Release: 11%{?dist}
 License: GPLv2+
-Group: Amusements/Games
-Source: ftp://ftp.gmd.de/if-archive/scott-adams/ScottFree.tar.gz
-Patch: scottfree-1.14.diff
-BuildRoot: %{_tmppath}/%{name}-%{version}-%{release}-root-%(%{__id_u} -n)
+Group:   Amusements/Games
+Source:  ftp://ftp.gmd.de/if-archive/scott-adams/ScottFree.tar.gz
+Patch:   scottfree-1.14.diff
+
 BuildRequires: ncurses-devel 
 
 %description
@@ -17,26 +19,23 @@ Most Adventure International Games are distributed as shareware and are
 available from ftp://ftp.gmd.de/if-archive/scott-adams/
 
 %prep
-%setup -q -c
-%patch -p1
+%autosetup -c -p1
 chmod 644 *
 
 %build
-make %{?_smp_mflags}
+%make_build
 
 %install
-rm -rf %{buildroot}
-make install DESTDIR=%{buildroot}
-
-%clean
-rm -rf %{buildroot}
+%make_install
 
 %files
-%defattr(-,root,root)
 %{_bindir}/scottfree
 %doc README Definition
 
 %changelog
+* Fri Sep 01 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.14-11
+- Disable debuginfo
+
 * Thu Aug 31 2017 RPM Fusion Release Engineering <kwizart@rpmfusion.org> - 1.14-10
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
 
