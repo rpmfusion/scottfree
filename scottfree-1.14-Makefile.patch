@@ -12,7 +12,7 @@
 -ScottCurses:	ScottCurses.o
 -	$(CC) ScottCurses.o -o ScottCurses -lcurses -ltermcap
 +scottfree:	ScottCurses.o
-+	$(CC) ScottCurses.o -o scottfree -lcurses
++	$(CC) $(LDFLAGS) ScottCurses.o -o scottfree -lcurses
  
 +install:
 +	mkdir -p $(DESTDIR)/usr/bin
@@ -20,14 +20,3 @@
  
 +clean:
 +	rm -f ScottCurses.o scottfree
---- scottfree-1.14.orig/ScottCurses.c
-+++ scottfree-1.14/ScottCurses.c
-@@ -20,6 +20,8 @@
- #include <curses.h>
- #include <stdarg.h>
- #include <signal.h>
-+#include <unistd.h>
-+#include <sys/types.h>
- 
- #include "Scott.h"
-

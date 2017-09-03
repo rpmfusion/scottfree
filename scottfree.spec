@@ -1,38 +1,63 @@
-%global	       debug_package %{nil}
-
-Summary: Interpreter for Scott Adams format text adventure games
 Name:    scottfree
 Version: 1.14
-Release: 11%{?dist}
+Release: 12%{?dist}
+Summary: Interpreter for Scott Adams format text adventure games
+
 License: GPLv2+
-Group:   Amusements/Games
-Source:  ftp://ftp.gmd.de/if-archive/scott-adams/ScottFree.tar.gz
-Patch:   scottfree-1.14.diff
+URL:     http://ifarchive.org/if-archive/scott-adams/interpreters/scottfree/
+Source0: http://ifarchive.org/if-archive/scott-adams/interpreters/scottfree/ScottFree.tar.gz
+# Man page taken from Debian
+Source1: %{name}.6
+Patch0:  %{name}-1.14-Makefile.patch
+Patch1:  %{name}-1.14-includes.patch
 
 BuildRequires: ncurses-devel 
+
 
 %description
 ScottFree is an interpreter for Scott-Adams-format text adventure games
 (remember those?). It reads and executes TRS-80 format data files.
 
 Most Adventure International Games are distributed as shareware and are 
-available from ftp://ftp.gmd.de/if-archive/scott-adams/
+available from http://ifarchive.org/if-archive/scott-adams/
+
 
 %prep
 %autosetup -c -p1
+
+# Fix file permissions
 chmod 644 *
 
+
 %build
+export CFLAGS="%{optflags}"
+export LDFLAGS="%{__global_ldflags}"
 %make_build
+
 
 %install
 %make_install
 
+# Install man page
+install -d %{buildroot}%{_mandir}/man6
+install -p -m 644 %{SOURCE1} %{buildroot}%{_mandir}/man6/
+
+
 %files
-%{_bindir}/scottfree
+%{_bindir}/%{name}
+%{_mandir}/man6/%{name}.6*
 %doc README Definition
 
+
 %changelog
+* Sat Sep 02 2017 Andrea Musuruane <musuruan@gmail.com> - 1.14-12
+- Fixed missing debuginfo
+- Added URL tag
+- Updated Source0 tags
+- Updated description
+- Added man page from Debian
+- Dropped Group tag
+
 * Fri Sep 01 2017 Leigh Scott <leigh123linux@googlemail.com> - 1.14-11
 - Disable debuginfo
 
