@@ -1,6 +1,6 @@
 Name:    scottfree
 Version: 1.14
-Release: 15%{?dist}
+Release: 16%{?dist}
 Summary: Interpreter for Scott Adams format text adventure games
 
 License: GPLv2+
@@ -50,6 +50,9 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_mandir}/man6/
 
 
 %changelog
+* Mon Mar 04 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.14-16
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
+
 * Sun Aug 19 2018 Leigh Scott <leigh123linux@googlemail.com> - 1.14-15
 - Rebuilt for Fedora 29 Mass Rebuild binutils issue
 
