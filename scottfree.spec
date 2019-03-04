@@ -11,7 +11,8 @@ Source1: %{name}.6
 Patch0:  %{name}-1.14-Makefile.patch
 Patch1:  %{name}-1.14-includes.patch
 
-BuildRequires: ncurses-devel 
+BuildRequires: ncurses-devel
+BuildRequires: gcc 
 
 
 %description
