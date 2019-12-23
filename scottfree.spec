@@ -8,11 +8,14 @@ URL:     http://ifarchive.org/if-archive/scott-adams/interpreters/scottfree/
 Source0: http://ifarchive.org/if-archive/scott-adams/interpreters/scottfree/ScottFree.tar.gz
 # Man page taken from Debian
 Source1: %{name}.6
+# Fix Makefile
 Patch0:  %{name}-1.14-Makefile.patch
+# Add missing headers
+# https://salsa.debian.org/games-team/scottfree/blob/master/debian/patches/02_scottcurses_includes.diff
 Patch1:  %{name}-1.14-includes.patch
 
+BuildRequires: gcc
 BuildRequires: ncurses-devel
-BuildRequires: gcc 
 
 
 %description
@@ -31,8 +34,7 @@ chmod 644 *
 
 
 %build
-export CFLAGS="%{optflags}"
-export LDFLAGS="%{__global_ldflags}"
+%set_build_flags
 %make_build
 
 
@@ -51,6 +53,9 @@ install -p -m 644 %{SOURCE1} %{buildroot}%{_mandir}/man6/
 
 
 %changelog
+* Fri Dec 20 2019 Andrea Musuruane <musuruan@gmail.com> - 1.14-17
+- Spec file clean up
+
 * Fri Aug 09 2019 RPM Fusion Release Engineering <leigh123linux@gmail.com> - 1.14-17
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_31_Mass_Rebuild
 
